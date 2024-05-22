@@ -84,7 +84,7 @@ def read_from_socket():
 
     while True:
         # 从socket读取数据
-        data = s.recv(204800).decode(errors='ignore')
+        # data = s.recv(204800).decode(errors='ignore')
 
         try:
             # 从socket读取数据
