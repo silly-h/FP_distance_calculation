@@ -110,7 +110,7 @@ def read_from_socket():
                 else:
                     velocity = False
             else:
-                print("VRTK2 running wrong,please check the status!")       
+                print("VRTK2 running wrong,please check the status! The velocity not output")       
 
             # 将parts[23]和parts[24]的值添加到队列中
             queue.append((int(parts[23]), int(parts[24])))
@@ -176,6 +176,7 @@ def read_from_socket():
                 if read_second_string :
                     # 如果是首次读取，将经纬度和高度存储在常量中
                     if mother_lat is None and mother_lon is None and mother_height is None:
+                        print("Automatically calculating distance ...")
                         first_lat, first_lon, first_height = lat, lon, height
 
                         first_data = data_storage[0]
@@ -223,8 +224,8 @@ def read_from_socket():
             
             # 如果按下's'键，开始手动计算距离
             if s_pressed:
-                print("Manually calculating distance ...")
                 if mother_lat_s is None and mother_lon_s is None and mother_height_s is None:
+                    print("Manually calculating distance ...")
                     first_lat_s, first_lon_s, first_height_s = lat, lon, height
                     mother_lat_s, mother_lon_s, mother_height_s = lat, lon, height
                 
