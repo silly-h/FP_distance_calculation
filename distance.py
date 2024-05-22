@@ -86,6 +86,14 @@ def read_from_socket():
         # 从socket读取数据
         data = s.recv(204800).decode(errors='ignore')
 
+        try:
+            # 从socket读取数据
+            data = s.recv(204800).decode(errors='ignore')
+            # 处理数据...
+        except ConnectionAbortedError:
+            print("Connection with VRTK2 aborted, trying to reconnect...")
+
+        # 这里你可以添加重新连接的代码
         # print(data)
 
         # 如果已经开始读取第二个字符串，就跳过第一个字符串的处理
